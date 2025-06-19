@@ -22,7 +22,6 @@ body {
 
 .statement-table {
   width: 100%;
-  border-collapse: collapse;
 }
 
 .statement-table th,
@@ -35,12 +34,11 @@ body {
 .statement-table th {
   background-color: #3498db;
   color: white;
-  text-align: right;
+  text-align: center;
 }
 
-.statement-table td:first-child,
-.statement-table th:first-child {
-  text-align: left;
+.statement-table td{
+  text-align: center;
 }
 
 .in {

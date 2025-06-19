@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { formatTransactions } from "../utils/formatTransactions";
+import { bankStatements } from "../utils/bankStatements";
 import "../App.css";
 
 const BankStatement = () => {
   const [statement, setStatement] = useState([]);
 
   useEffect(() => {
-    fetch("transactions.json") 
+    fetch("bankdata.json") 
       .then(res => res.json())
       .then(data => {
-        const formatted = formatTransactions(data);
+        const formatted = bankStatements(data);
         setStatement(formatted);
       })
-      .catch(err => console.error("Failed to fetch transactions:", err));
   }, []);
 
   return (
@@ -28,12 +27,12 @@ const BankStatement = () => {
           </tr>
         </thead>
         <tbody>
-          {statement.map((row, index) => (
+          {statement.map((data, index) => (
             <tr key={index}>
-              <td>{row.date}</td>
-              <td className="in">{row.amountIn || "-"}</td>
-              <td className="out">{row.amountOut || "-"}</td>
-              <td className="balance">{row.balance}</td>
+              <td>{data.date}</td>
+              <td className="in">{data.amountIn || "-"}</td>
+              <td className="out">{data.amountOut || "-"}</td>
+              <td className="balance">{data.balance}</td>
             </tr>
           ))}
         </tbody>
